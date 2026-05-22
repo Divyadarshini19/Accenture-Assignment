@@ -1,0 +1,194 @@
+db.products.insertMany([
+
+{
+
+name: "iPhone 14",
+
+category: "Electronics",
+
+price: 75000,
+
+stock: 25,
+
+brand: "Apple"
+
+},
+
+{
+
+name: "Samsung Galaxy S22",
+
+category: "Electronics",
+
+price: 65000,
+
+stock: 30,
+
+brand: "Dell"
+},
+{
+name: "HP Pavilion Laptop",
+
+category: "Computers",
+
+price: 50000,
+
+stock: 12,
+
+brand: "HP"
+
+},
+
+{
+
+name: "Nike Shoes",
+
+category: "Fashion",
+
+price: 5000,
+
+stock: 50,
+
+brand: "Nike"
+
+},
+
+{
+
+name: "Adidas T-shirt",
+
+category: "Fashion",
+
+price: 1500,
+
+stock: 80,
+
+brand: "Adidas"
+
+},
+
+{
+
+name: "Sony Headphones",
+category: "Electronics",
+
+price: 3000,
+
+stock: 40,
+
+brand: "Sony"
+
+},
+
+  {
+
+name: "Wooden Dining Table",
+
+category: "Furniture",
+
+price: 20000,
+
+stock: 5,
+
+brand: "IKEA"
+
+},
+
+{
+
+name: "Office Chair",
+
+category: "Furniture",
+
+price: 7000,
+
+stock: 20,
+
+brand: "Godrej"
+},
+
+{
+
+name: "Bluetooth Speaker",
+
+category:"Electronics",
+
+price: 2500,
+
+stock: 60,
+
+brand: "JBL"
+
+}
+
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a0fe8ac6fe761b781345564'),
+    '1': ObjectId('6a0fe8ac6fe761b781345565'),
+    '2': ObjectId('6a0fe8ac6fe761b781345566'),
+    '3': ObjectId('6a0fe8ac6fe761b781345567'),
+    '4': ObjectId('6a0fe8ac6fe761b781345568'),
+    '5': ObjectId('6a0fe8ac6fe761b781345569'),
+    '6': ObjectId('6a0fe8ac6fe761b78134556a'),
+    '7': ObjectId('6a0fe8ac6fe761b78134556b'),
+    '8': ObjectId('6a0fe8ac6fe761b78134556c')
+  }
+}
+
+db.products.find({name:"Sony Headphones"})
+
+db.products.find({category:"Electronics"})
+
+db.products.find({price:{$lt:5000}})
+
+db.products.find({price:{$lte:5000}})
+
+db.products.find({price:{$gt:5000}})
+
+db.products.find({price:{$ne:5000}})
+
+db.products.find({price:{$in:[1000,2000,5000]}})
+
+db.products.find({price:{$nin:[1000,2000,5000]}}
+
+db.products.find({$and:[{category:"Electronics"},{price:5000}]})
+
+db.products.find({$or:[{category:"Electronics"},{brand:"apple"}]})
+
+db.products.find({$or:[{price:{$gt:5000}},{brand:"Apple"}]})
+
+db.product.find({price:{$not:{$gt:5000}}})
+
+db.products.updateOne({_id:ObjectId("6a0fe8ac6fe761b78134556b")},{$set:{name:"Office table"}})
+
+db.products.updateMany({price:{$lt:5000}},{$set:{stock:1000}})
+
+db.products.updateMany({category:"Electronics"},{$set:{stock:"100"}})
+
+db.products.findOneAndReplace({_id:ObjectId("6a0fe8ac6fe761b781345564")},
+                              {name:"Washing machine",
+                               category:"Home appliance",
+                               price:50000,
+                               stock:50,
+                               brand:"LG"
+                              }
+                             )
+
+
+db.products.deleteOne({name:"Washing machine"})
+
+db.products.deleteOne({price:{$lt:2000}})
+
+db.products.findOne({},{name:1,price:1})
+
+db.products.findOne({},{name:1,price:1,_id:0})
+
+db.products.find().limit(5)
+
+db.products.find().limit(5).skip(5)
+
+db.products.find().sort({price:1})
+
+db.products.find().sort({price:-1})
